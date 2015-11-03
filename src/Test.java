@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 /**
  * Generate order relation strings, print and count them.
@@ -31,6 +32,7 @@ public class Test {
 		char[] alphabet = {'a', 'b', 'c'};
 		test(alphabet);
 		draw(alphabet);
+		print(alphabet);
 		
 	}
 	
@@ -83,10 +85,11 @@ public class Test {
 		char[] alphabet = {'a', 'b', 'c', 'd'};
 		test(alphabet);
 		draw(alphabet);
+		print(alphabet);
 	}
 	public Test() {
 
-		test4();
+		test3();
 		System.out.println("anz. ordn" + index);
 
 		
@@ -115,6 +118,8 @@ public class Test {
 		jf.setSize(500, 500);
 		jf.setBackground(Color.pink);
 		jf.setLayout(null);
+		jf.setLocationRelativeTo(null);
+		jf.setLocation(jf.getLocation().x - 250, jf.getLocation().y);
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JLabel jlbl = new JLabel();
 		JScrollPane js = new JScrollPane(jlbl);
@@ -131,7 +136,38 @@ public class Test {
 		jlbl.setSize(bi.getWidth(), bi.getHeight());
 		jf.add(js);
 		jf.setVisible(true);
-		jf.setResizable(false);
+		jf.setResizable(true);
+		
+	}
+
+	public void print(final char[] _alphabe) {
+//		aa, bb, cc, ab, ac, bc, 
+		BufferedImage bi = new BufferedImage(100, index * 100, BufferedImage.TYPE_INT_ARGB);
+
+		JFrame jf = new JFrame("Reflexivität nicht eigezeichnet. n = " + _alphabe.length + ", anz = " + (index));
+		jf.setSize(500, 500);
+		jf.setBackground(Color.pink);
+		jf.setLocationRelativeTo(null);
+		jf.setLayout(null);
+		jf.setLocation(jf.getLocation().x + 250, jf.getLocation().y);
+		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		JTextArea jlbl = new JTextArea();
+		JScrollPane js = new JScrollPane(jlbl);
+		js.setSize(jf.getWidth(), jf.getHeight());
+		
+
+		System.out.println("anz. ordn" + index);
+
+
+		String strg = "";
+		for (int i = 0; i < index; i++) {
+			strg += i + "\t" + ord[i].printRet() + "\n";
+		}
+		jlbl.setText(strg);
+		jlbl.setSize(jlbl.getPreferredSize());
+		jf.add(js);
+		jf.setVisible(true);
+		jf.setResizable(true);
 		
 	}
 	// ab ac cb

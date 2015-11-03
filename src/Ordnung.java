@@ -107,6 +107,14 @@ public class Ordnung {
 					+ leq + "" + relation[i].charAt(1) + ", ");
 		}
 	}
+	public String printRet() {
+		String d = "";
+		for (int i = 0; i < relation.length; i++) {
+			d += (relation[i].charAt(0) + "" 
+					+ leq + "" + relation[i].charAt(1) + ", ");
+		}
+		return d;
+	}
 	
 	/**
 	 * Check whether the current instance of Ordnung is actually 
